@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method is to calculate the price and quantity .
+     * This method is to calculate the price and quantity.
      * @param view
      */
     public void submitOrder(View view) {
