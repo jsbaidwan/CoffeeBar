@@ -15,24 +15,45 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     /**
-     * This method is called when the order button is clicked.
+     * This method is called to increase the quantity when the order button is clicked.
      */
     public void increment(View view)   {
 
         quantity = quantity + 1;
         display(quantity);
     }
+
+    /**
+     * This method is called to decrease the quantity when the order button is clicked.
+     */
+
     public void decrement (View view)   {
 
         quantity = quantity - 1;
         display(quantity);
     }
 
+    /**
+     * This method is to calculate the price and quantity .
+     * @param view
+     */
     public void submitOrder(View view) {
-        int price = 5;
-        displayPrice(quantity*price);
-        String priceMessage = "Free";
+        int price = quantity *5;
+        //displayPrice(quantity*price);
+        String priceMessage = "Total $ " + price;
+        priceMessage = priceMessage + "\nThank You";
         displayText(priceMessage);
+        calculatePrice(quantity);
+    }
+
+    /**
+     * Calculate the price of order
+     *
+     * @param quantity is the number of coffee cups
+     */
+
+    private void calculatePrice (int quantity)   {
+        int price = quantity * 5;
     }
 
     /**
