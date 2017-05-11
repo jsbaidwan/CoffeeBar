@@ -41,22 +41,34 @@ public class MainActivity extends AppCompatActivity {
         int price;
         //displayPrice(quantity*price);
         price = calculatePrice();
-        String priceMessage = "Total $ " + price;
-        priceMessage = priceMessage + "\nThank You";
-        displayText(priceMessage);
 
-        //displayPrice(price);
+        displayText(createOrderSummary(price));
+
     }
 
     /**
      * Calculate the price of order
      *
-     * @param quantity is the number of coffee cups
+     * @return total price  of coffee cups
      */
 
     private int calculatePrice ()   {
         int price = quantity * 5;
         return price;
+    }
+
+    /**
+     *
+     * This method create the summary of the order
+     * @param price is the total price of coffee order
+     * @return the summary of order as String
+     */
+    private String createOrderSummary (int price) {
+        String priceMessage = "Name: Jaspreet Singh Baidwan";
+        priceMessage += "\nQuantity: " +quantity;
+        priceMessage += "\nTotal $ " + price;
+        priceMessage += "\nThank You";
+        return priceMessage;
     }
 
     /**
