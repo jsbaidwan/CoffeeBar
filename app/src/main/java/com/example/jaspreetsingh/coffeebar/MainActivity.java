@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         priceMessage = priceMessage + "\nThank You";
         displayText(priceMessage);
 
-        displayPrice(price);
+        //displayPrice(price);
     }
 
     /**
