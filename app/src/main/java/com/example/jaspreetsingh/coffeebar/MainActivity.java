@@ -38,12 +38,14 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void submitOrder(View view) {
-        int price = quantity *5;
+        int price;
         //displayPrice(quantity*price);
+        price = calculatePrice();
         String priceMessage = "Total $ " + price;
         priceMessage = priceMessage + "\nThank You";
         displayText(priceMessage);
-        calculatePrice(quantity);
+
+        displayPrice(price);
     }
 
     /**
@@ -52,8 +54,9 @@ public class MainActivity extends AppCompatActivity {
      * @param quantity is the number of coffee cups
      */
 
-    private void calculatePrice (int quantity)   {
+    private int calculatePrice ()   {
         int price = quantity * 5;
+        return price;
     }
 
     /**
