@@ -5,7 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
+
+import static android.icu.lang.UCharacter.JoiningGroup.E;
 
 public class MainActivity extends AppCompatActivity {
     int quantity =2;
@@ -39,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void submitOrder(View view) {
+
+        CheckBox whippedCream = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
+        Boolean hasWhippedCream = whippedCream.isChecked();
+        Log.v("MainActivity", "Has Whipped Cream " + hasWhippedCream);
 
         int price = calculatePrice();
         Log.v("MainActivity", "This price is " + price);
