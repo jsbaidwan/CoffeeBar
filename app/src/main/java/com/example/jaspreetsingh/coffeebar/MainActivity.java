@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
         CheckBox chocolate = (CheckBox) findViewById(R.id.chocolate_checkbox);
         Boolean hasChocolate = chocolate.isChecked();
 
-        int price = calculatePrice();
+        int price = calculatePrice(hasWhippedCream, hasChocolate);
+
        // Log.v("MainActivity", "This price is " + price);
         displayText(createOrderSummary(name, price, hasWhippedCream, hasChocolate));
 
@@ -65,9 +66,20 @@ public class MainActivity extends AppCompatActivity {
      * @return total price  of coffee cups
      */
 
-    private int calculatePrice ()   {
-        int price = quantity * 5;
-        return price;
+    private int calculatePrice (boolean addWhippedCream, boolean addchocolate)   {
+        //Base  price of coffee is $5
+        int coffeePrice = 5;
+        //adding whipped cream adds $1 to the price of coffee
+        if (addWhippedCream)    {
+            coffeePrice += 1;
+        }
+        //adding chocolate adds $2 to the price of coffee
+        if (addchocolate)  {
+            coffeePrice += 2;
+        }
+        //total price of the coffee is multiplied with the quantity
+        int totalPrice = coffeePrice * quantity;
+        return totalPrice;
     }
 
     /**
