@@ -8,11 +8,12 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static android.icu.lang.UCharacter.JoiningGroup.E;
 
 public class MainActivity extends AppCompatActivity {
-    int quantity =2;
+    int quantity =98;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,10 @@ public class MainActivity extends AppCompatActivity {
      * This method is called to increase the quantity when the order button is clicked.
      */
     public void increment(View view)   {
-
+        if(quantity ==100)  {
+            Toast.makeText(this, "You cannot have more than 100 cups of coffee", Toast.LENGTH_SHORT).show();
+            return;
+        }
         quantity = quantity + 1;
         displayQuantity(quantity);
     }
@@ -33,7 +37,10 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void decrement (View view)   {
-
+        if(quantity==0) {
+            Toast.makeText(this, "You cannot have less than 1 cup of coffee", Toast.LENGTH_SHORT).show();
+            return;
+        }
         quantity = quantity - 1;
         displayQuantity(quantity);
     }
