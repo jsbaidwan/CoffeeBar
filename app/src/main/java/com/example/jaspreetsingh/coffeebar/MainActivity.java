@@ -1,6 +1,9 @@
 package com.example.jaspreetsingh.coffeebar;
 
 import java.text.NumberFormat;
+
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +16,7 @@ import android.widget.Toast;
 import static android.icu.lang.UCharacter.JoiningGroup.E;
 
 public class MainActivity extends AppCompatActivity {
-    int quantity =98;
+    int quantity =5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +65,23 @@ public class MainActivity extends AppCompatActivity {
 
         int price = calculatePrice(hasWhippedCream, hasChocolate);
 
-       // Log.v("MainActivity", "This price is " + price);
-        displayText(createOrderSummary(name, price, hasWhippedCream, hasChocolate));
+//       // Log.v("MainActivity", "This price is " + price);
 
+        String priceMessage = createOrderSummary(name, price, hasWhippedCream, hasChocolate);
+
+
+        composeEmail("jsbaidwan@gmail.com", name, priceMessage);
+       // displayText(priceMessage);
+    }
+    public void composeEmail(String addresses, String subject, String text) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Coffee order summary of " + subject);
+        intent.putExtra(Intent.EXTRA_TEXT, text);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     /**
@@ -73,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
      * @return total price  of coffee cups
      */
 
-    private int calculatePrice (boolean addWhippedCream, boolean addchocolate)   {
+    private int calculatePrice (boolean addWhippedCream, boolean addChocolate)   {
         //Base  price of coffee is $5
         int coffeePrice = 5;
         //adding whipped cream adds $1 to the price of coffee
@@ -81,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             coffeePrice += 1;
         }
         //adding chocolate adds $2 to the price of coffee
-        if (addchocolate)  {
+        if (addChocolate)  {
             coffeePrice += 2;
         }
         //total price of the coffee is multiplied with the quantity
