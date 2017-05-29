@@ -70,19 +70,22 @@ public class MainActivity extends AppCompatActivity {
         String priceMessage = createOrderSummary(name, price, hasWhippedCream, hasChocolate);
 
 
-        composeEmail("jsbaidwan@gmail.com", name, priceMessage);
-       // displayText(priceMessage);
+//        composeEmail("jsbaidwan@gmail.com", name, priceMessage);
+        displayText(priceMessage);
     }
-    public void composeEmail(String addresses, String subject, String text) {
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Coffee order summary of " + subject);
-        intent.putExtra(Intent.EXTRA_TEXT, text);
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        }
-    }
+    /**
+     * This is method is used to send order summary directly to email on clicking the button
+     */
+//    public void composeEmail(String addresses, String subject, String text) {
+//        Intent intent = new Intent(Intent.ACTION_SENDTO);
+//        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+//        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+//        intent.putExtra(Intent.EXTRA_SUBJECT, "Coffee order summary of " + subject);
+//        intent.putExtra(Intent.EXTRA_TEXT, text);
+//        if (intent.resolveActivity(getPackageManager()) != null) {
+//            startActivity(intent);
+//        }
+//    }
 
     /**
      * Calculate the price of order
@@ -91,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
      */
 
     private int calculatePrice (boolean addWhippedCream, boolean addChocolate)   {
+        int totalPrice;
         //Base  price of coffee is $5
         int coffeePrice = 5;
         //adding whipped cream adds $1 to the price of coffee
@@ -102,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             coffeePrice += 2;
         }
         //total price of the coffee is multiplied with the quantity
-        int totalPrice = coffeePrice * quantity;
+        totalPrice = coffeePrice * quantity;
         return totalPrice;
     }
 
