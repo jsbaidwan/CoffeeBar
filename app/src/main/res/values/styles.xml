@@ -5,8 +5,8 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#795548</item>
         <item name="colorPrimaryDark">#5D4037</item>
-        <item name="colorAccent">#FF6D00</item>
-        <item name="colorButtonNormal">#FF6D00</item>
+        <item name="colorAccent">#FFB74D</item>
+        <item name="colorButtonNormal">#FFB74D</item>
     </style>
     <!--Header style-->
     <style name="header_text_style">
